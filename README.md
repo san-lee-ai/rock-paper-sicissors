@@ -1,9 +1,12 @@
-dApp game with Solidity, Truffle, Ganache
+# dApp game with Solidity, Truffle, Ganache
 
-Truffle for Smart-Contract
+`originally published March 2018 as a part of dApp course by Siraj's The School of AI`
+
+__Truffle for Smart-Contract__
 
 The first thing I’ll do is set up a Truffle “test-bed” that will allow me to easily test compiling my smart contract.
 
+```
 $ npm install -g truffle
 /usr/local/bin/truffle -> /usr/local/lib/node_modules/truffle/build/cli.bundled.js
 + truffle@4.1.5
@@ -20,11 +23,13 @@ Commands:
   Compile:        truffle compile
   Migrate:        truffle migrate
   Test contracts: truffle test
+```
 
-Solidity smart contract for the game
+__Solidity smart contract for the game__
 
-Create a contract called RockPaperSicissors.sol in the contracts directory that was created by truffle init command
+_Create a contract called RockPaperSicissors.sol in the contracts directory that was created by truffle init command_
 
+```
 pragma solidity ^0.4.17;
 
 contract RockPaperScissors {
@@ -146,28 +151,28 @@ contract RockPaperScissors {
     return balances[addr];
   }
 }
-
+```
 
 In real world, you have to pay gas if you call a state-changing function. Reading data out of these “storage” structures is free. Now, you could run Truffle test compile/deploy commands against a real Ethereum node, but that would cost real Ether, plus it’s time-consuming and memory consuming to run your own node if you don’t need to. So we do a quick few install commands:
 
-Compiling & Testing a Smart-Contract
+__Compiling & Testing a Smart-Contract__
 
 It’s really easy using simple Truffle commands, but first we actually need a local Ethereum node to test against. Ganache CLI, part of the Truffle suite of Ethereum development tools, is the command line version of Ganache, your personal blockchain for Ethereum development.
 
-$ npm install -g ganache-cli (if you don’t have installed ganache yet.)
+`$ npm install -g ganache-cli (if you don’t have installed ganache yet.)`
 
-$ ganache-cli
+`$ ganache-cli`
 
 Listening on localhost:8545 means that we’re ready for test deployment. You’ll need to modify the file /migrations/2_deploy_contracts.js to include the name of your smart-contract, for truffle to know to compile and deploy it. We do this command:
 
-$ truffle compile
+`$ truffle compile`
 
 If all goes well, you’ll see a message saying it’s “saving artifacts”, and no error messages.
 
 test deployment of your smart-contract onto your ganache node
 
 First, modify truffle.js 
-
+```
 module.exports = {
    networks: {
    development: {
@@ -177,18 +182,18 @@ module.exports = {
   }
  }
 };
+```
 
+```
 $ truffle migrate
 Using network 'development'.
 
 Network up to date.
+```
 
-Whenever you update source code, you need to redeploy it by using —reset option. It would be convenient to do by truffle compile && truffle migrate —reset 
+Whenever you update source code, you need to redeploy it by using —reset option. It would be convenient to do by `truffle compile && truffle migrate —reset `
 
- 
-￼
-
-Play the Rock, Paper, Scissors game
+__Play the Rock, Paper, Scissors game__
 
 You can play it with truffle console by calling functions directly. 
 
@@ -220,7 +225,7 @@ You can play the game until one of the parties will lose all fund (bankrupted).
 
  
 
-
+```
 $ npm install -g create-react-app
 
 
@@ -244,7 +249,7 @@ at block: 0 (Wed, 31 Dec 1969 19:00:00 EST)
 > web3.eth.coinbase
 "0x48675b859b6c3785cb2fe3df9c2437c424f7abca"
 > 
-
+```
 $ create-react-app app
 
 Success! Created app at /Users/shlee/dvlp/dApp/4Game/rock-paper-scissors-dapp/app
