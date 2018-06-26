@@ -1,5 +1,4 @@
-dApp game with Solidity, Truffle, Ganache
-
+DApp game with Solidity, Truffle, Ganache
 Truffle for Smart-Contract
 The first thing I’ll do is set up a Truffle “test-bed” that will allow me to easily test compiling my smart contract.
 
